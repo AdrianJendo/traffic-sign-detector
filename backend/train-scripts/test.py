@@ -13,6 +13,8 @@ imgs = y_test["Path"].values
 
 data = []
 
+print(imgs)
+
 for img in imgs:
     image = Image.open("./data/{}".format(img))
     image = image.resize((30, 30))
