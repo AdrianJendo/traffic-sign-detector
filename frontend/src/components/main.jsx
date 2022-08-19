@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import axios from "axios";
 import "css/main.css";
 
 export default function Main() {
@@ -10,7 +11,11 @@ export default function Main() {
     setImage(URL.createObjectURL(image));
   };
 
-  const classifyImage = () => {};
+  const classifyImage = () => {
+    axios.post("/api/classify_photo").then((resp) => {
+      console.log(resp.data);
+    });
+  };
 
   return (
     <div>
