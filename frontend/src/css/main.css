@@ -6,4 +6,15 @@
   padding: 20px;
   display: flex;
   justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+}
+
+.imagePreview {
+  min-height: 200px;
+  padding: 40px;
+}
+
+.classifyDiv {
+  padding: 40px;
 }

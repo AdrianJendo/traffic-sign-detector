@@ -6,9 +6,12 @@ export default function Main() {
   const [image, setImage] = useState(null);
 
   const handleFileUpload = (e) => {
-    console.log(e);
-    setImage(true);
+    const image = e.target.files[0];
+    setImage(URL.createObjectURL(image));
   };
+
+  const classifyImage = () => {};
+
   return (
     <div>
       <Typography variant="h2">Upload an image</Typography>
@@ -21,8 +24,12 @@ export default function Main() {
       />
       {image && (
         <div className="content">
-          <div>Image preview</div>
-          <Button variant="contained">Classify Image</Button>
+          <img src={image} alt="Error" className="imagePreview" />
+          <div className="classifyDiv">
+            <Button variant="contained" onClick={() => classifyImage()}>
+              Classify Image
+            </Button>
+          </div>
         </div>
       )}
     </div>
