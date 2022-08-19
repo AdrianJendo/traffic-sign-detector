@@ -1,0 +1,9 @@
+.img {
+  padding: 20px;
+}
+
+.content {
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
