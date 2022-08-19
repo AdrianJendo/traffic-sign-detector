@@ -14,6 +14,8 @@ labels = []
 classes = 43
 cur_path = os.getcwd()
 
+print("Loading images")
+
 for i in range(classes):
     # data from https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign
     path = os.path.join(cur_path, "data/Train", str(i))
@@ -21,7 +23,7 @@ for i in range(classes):
 
     for a in images:
         try:
-            image = Image.open(path + "//" + a)
+            image = Image.open(path + "/" + a)
             image = image.resize((30, 30))
             image = np.array(image)
             data.append(image)
@@ -29,15 +31,17 @@ for i in range(classes):
         except:
             print("Error loading img")
 
+
 data = np.array(data)
 labels = np.array(labels)  # 39209 labels
 
-print("done loading data")
+print("done loading images")
 print(data.shape, labels.shape)  # (39209, 30, 30, 3) (39209,)
 
+# split data into train & validation sets
 x_train, x_test, y_train, y_test = train_test_split(
     data, labels, test_size=0.2, random_state=42
-)  # split data into train & test for validation
+)
 
 # 31367 training examples, 7842 validation examples
 print(
@@ -73,7 +77,8 @@ model.add(Flatten())
 model.add(Dense(256, activation="relu"))
 model.add(Dropout(rate=0.5))
 model.add(Dense(43, activation="softmax"))
-# Compilation of the model
+
+# Compile model with loss and optimizer
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 epochs = 20
 history = model.fit(
@@ -84,10 +89,7 @@ history = model.fit(
     validation_data=(x_test, y_test),  # Use validation data to compute loss
 )
 
-print("HISTORY", history)
-print("HISTORY.history", history.history)
-
-model.save("traffic_sign_classifier.h5")
+model.save("../traffic_sign_classifier.h5")
 # plotting graphs for accuracy
 plt.figure(0)
 plt.plot(history.history["accuracy"], label="training accuracy")

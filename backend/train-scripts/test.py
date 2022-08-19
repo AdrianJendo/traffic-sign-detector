@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 from tensorflow.keras.models import load_model
 
 # accuracy on test dataset
-model = load_model("traffic_sign_classifier.h5")
+model = load_model("../traffic_sign_classifier.h5")
 
 y_test = pd.read_csv("./data/Test.csv")
 labels = y_test["ClassId"].values

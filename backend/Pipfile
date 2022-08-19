@@ -11,6 +11,7 @@ matplotlib = "*"
 pandas = "*"
 pillow = "*"
 black = "*"
+flask = "*"
 
 [dev-packages]
 
