@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    volumes:
+      - /frontend/node_modules
+      - ./frontend/src:/frontend/src
+    environment:
+      - WDS_SOCKET_PORT=0 # Fixes bug where websocket connection is fixed to default port 3000
+
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - /backend/node_modules
+      - ./backend:/backend
+
+  nginx:
+    restart: always
+    depends_on:
+      - frontend
+      - backend
+    build:
+      context: ./nginx
+    ports:
+      - 8080:80
