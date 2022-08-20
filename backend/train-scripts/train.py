@@ -89,6 +89,9 @@ history = model.fit(
     validation_data=(x_test, y_test),  # Use validation data to compute loss
 )
 
+print("Accuracy", history.history["accuracy"])
+print("Validation Accuracy", history.history["val_accuracy"])
+
 model.save("../traffic_sign_classifier.h5")
 # plotting graphs for accuracy
 plt.figure(0)
