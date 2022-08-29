@@ -6,4 +6,5 @@ Implemented a Convolutional Neural Network to detect traffic signs in a full sta
 - Varied model parameters including batch size, dropout rate, and activation functions to improve accuracy
 
 App Demo:
+
 https://user-images.githubusercontent.com/55325093/187105362-207ea70e-710b-4a95-84d3-7acb052db62a.mp4
